@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct HeartGenerator : Identifiable {
+struct PointGenerator : Identifiable {
     var id = UUID()
     var name: String
-    var heartsPerSecond: Int
+    var pointPerSecond: Int
     var price: Int
 }
