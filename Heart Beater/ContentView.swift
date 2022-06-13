@@ -28,11 +28,11 @@ struct ContentView: View {
                 Text("\(gameState.pointsPerSecond) hearts/s")
             }
             
-            List(heartBeater.HeartGenerator) { heartGenerator in
+            List(gameState.pointGenerators) { pointGenerator in
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(heartGenerator.name)
-                        Text("\(heartGenerator.heartsPerSecond) hearts/s")
+                        Text(pointGenerator.name)
+                        Text("\(pointGenerator.pointsPerSecond) hearts/s")
                         Text("Price: \(pointGenerator.price) hearts")
                         //in-game text for hearts + the amount of hearts (point generator)
                     }
