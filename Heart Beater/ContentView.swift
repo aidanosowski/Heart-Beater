@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var heartBeater = HeartBeater()
+    @ObservedObject var gameState = GameState()
     
     var body: some View {
         VStack() {
             Button(action: {
-                self.heartBeater.click()
+                self.gameState.click()
             }) {
-                Text("Click me!")
+                Text("Heart me!")
+                // clicking button text
             }
             .padding(10)
             .background(Color.red)
             .foregroundColor(.black)
+            //app color
+            Text("\(gameState.points) hearts")
             
-            Text("\(heartBeater.points) hearts")
-            
-            if heartBeater.heartsPerSecond > 0 {
-                Text("\(heartBeater.heartsPerSecond) hearts/s")
+            if gameState.pointspersecond > 0 {
+                Text("\(gameState.pointsPerSecond) hearts/s")
             }
             
             List(heartBeater.HeartGenerator) { heartGenerator in
@@ -32,17 +33,18 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         Text(heartGenerator.name)
                         Text("\(heartGenerator.heartsPerSecond) hearts/s")
-                        Text("Price: \(heartGenerator.price) hearts")
+                        Text("Price: \(pointGenerator.price) hearts")
+                        //in-game text for hearts + the amount of hearts (point generator)
                     }
                     Spacer()
                     Group {
                         Button(action: {
-                            self.heartBeater.purchase(pointGenerator: heartGenerator)
+                            self.gameState.purchase(pointGenerator: pointGenerator)
                         }) {
                             Text("Purchase")
                         }
                         .buttonStyle(BorderlessButtonStyle())
-                        .disabled(self.heartBeater.points < heartGenerator.price)
+                        .disabled(self.gameState.points < pointGenerator.price)
                     }
                 }
             }
