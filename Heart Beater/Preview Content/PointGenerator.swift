@@ -1,5 +1,5 @@
 //
-//  HeartGenerator.swift
+//  PointGenerator.swift
 //  Heart Beater
 //
 //  Created by Aidan Osowski on 5/26/22.
